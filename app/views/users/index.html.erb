@@ -1,0 +1,37 @@
+<h1>User#index</h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h5 class="panel-title">table</h5>
+  </div>
+  <div class="panel-body text-center">
+    <a class="btn btn-success" href="#" data-toggle="modal" data-target="#modal">選択する</a>
+  </div>
+</div>
+
+<div id="modal" class="modal fade">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="modal-title">選択</h5>
+      </div>
+      <div class="modal-body">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">hoge</h4>
+          </div>
+          <div class="panel-body">
+            <%= form_for @search, url: search_users_path, method: :get, remote: true, html: { class: 'form-horizontal', role: 'form' } do |f| %>
+              <%= render 'search_form', f: f %>
+              <div class="list">
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
