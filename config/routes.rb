@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
   resources :users do
     collection do
-      get :search
+      get :show_results
     end
+  end
+
+  namespace :reference do
+    get 'users/search'
   end
 end

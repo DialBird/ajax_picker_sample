@@ -13,5 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails-ujs
+//= require mustache
+//= require mass-checkable
 //= require_tree .
 //= require twitter/bootstrap

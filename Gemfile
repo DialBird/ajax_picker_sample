@@ -21,6 +21,7 @@ gem 'twitter-bootstrap-rails'
 gem 'font-awesome-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'jquery-rails'
+gem 'kaminari'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

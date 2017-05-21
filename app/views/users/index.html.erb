@@ -4,34 +4,40 @@
   <div class="panel-heading">
     <h5 class="panel-title">table</h5>
   </div>
-  <div class="panel-body text-center">
-    <a class="btn btn-success" href="#" data-toggle="modal" data-target="#modal">選択する</a>
+  <div class="panel-body">
+    <%= form_tag '', method: :get, class: '', id: 'a-form', role: 'role' do %>
+      <div class="text-center">
+        <a class="btn btn-success" href="#" data-toggle="modal" data-target="#modal">選択する</a>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>age</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="yey">
+        </tbody>
+      </table>
+      <div class="col-sm-12 text-center">
+        <%= link_to '送信', show_results_users_path, id: 'export', class: 'btn btn-primary', target: '_blank' %>
+      </div>
+    <% end %>
   </div>
 </div>
 
-<div id="modal" class="modal fade">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h5 class="modal-title">選択</h5>
-      </div>
-      <div class="modal-body">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">hoge</h4>
-          </div>
-          <div class="panel-body">
-            <%= form_for @search, url: search_users_path, method: :get, remote: true, html: { class: 'form-horizontal', role: 'form' } do |f| %>
-              <%= render 'search_form', f: f %>
-              <div class="list">
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'shared/users/reference' %>
+
+<script id="hoge-tmpl" type="text/html" data-json-url="<%= users_path(format: :json) %>">
+  {{#users}}
+    <tr>
+      <input type="hidden" name="ids[]" value="{{id}}">
+      <td>{{id}}</td>
+      <td>{{name}}</td>
+      <td>{{age}}</td>
+      <td class="text-right"><%= button_tag '削除', class: 'btn btn-danger delete-user' %></td>
+    </tr>
+  {{/users}}
+</script>

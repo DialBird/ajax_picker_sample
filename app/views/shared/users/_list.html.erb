@@ -1,0 +1,19 @@
+<%= paginate @users, remote: true, total_count: @users.total_count %>
+<table class="table table-striped table-hover results">
+  <thead>
+    <tr>
+      <th><input type="checkbox" class="mass-checkable"></th>
+      <th>name</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody id="users-list">
+  <% @users.each do |user| %>
+    <tr class="user" data-format="<%= _json[user.id] rescue nil %>">
+      <td><%= check_box_tag 'ids[]', user.id, nil, class: 'mass-checkable' %></td>
+      <td class="user-name"><%= user.name %></td>
+      <td class="user-age"><%= user.age %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
